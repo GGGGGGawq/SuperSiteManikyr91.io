@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Nails - Премиальный салон ногтевого сервиса</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffb6c1;
+            --secondary: #ff69b4;
+            --accent: #ff1493;
+            --light: #fff0f5;
+            --dark: #333;
+            --gray: #888;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fffaf0;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        /* Шапка сайта */
+        header {
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 10px 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--accent);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--accent);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn:hover:before {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            color: white;
+        }
+        
+        /* Герой секция */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--dark);
+        }
+        
+        .btn-hero {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(255, 20, 147, 0.3);
+            transform: translateY(0);
+            transition: var(--transition);
+        }
+        
+        .btn-hero:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(255, 20, 147, 0.4);
+        }
+        
+        /* Секции */
+        section {
+            padding: 100px 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 70px;
+            color: var(--accent);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Услуги */
+        .services {
+            background: var(--light);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            transform: translateY(0);
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        
+        .price {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 15px 0;
+        }
+        
+        /* О нас */
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transform: rotate(-3deg);
+            transition: var(--transition);
+        }
+        
+        .about-img:hover {
+            transform: rotate(0);
+        }
+        
+        .about-img div {
+            height: 500px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--accent);
+        }
+        
+        /* Мастера */
+        .team {
+            background: var(--light);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-img {
+            height: 300px;
+            background: linear-gradient(45deg, #ffb6c1, #ff69b4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-info h3 {
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        /* Отзывы */
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+        }
+        
+        .testimonials {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 300%;
+        }
+        
+        .testimonial {
+            flex: 0 0 33.333%;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .testimonial-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .testimonial-content:after {
+            content: '"';
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--primary);
+            font-family: Georgia, serif;
+        }
+        
+        .client {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .client-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        /* Запись */
+        .booking {
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
+            text-align: center;
+        }
+        
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        /* Футер */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 5% 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+        
+        /* Модальные окна */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+        
+        .close-modal:hover {
+            color: var(--accent);
+        }
+        
+        .modal h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--accent);
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .tab.active {
+            color: var(--accent);
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        /* Анимации при прокрутке */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Мобильное меню */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: var(--transition);
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+            }
+            
+            nav li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header id="header">
+        <div class="logo">Luxury Nails</div>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#team">Мастера</a></li>
+                <li><a href="#booking">Запись</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn btn-outline" id="login-btn">Войти</button>
+            <button class="btn btn-primary" id="register-btn">Регистрация</button>
+        </div>
+    </header>
+
+    <!-- Герой секция -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Идеальный маникюр для безупречного образа</h1>
+            <p>Добро пожаловать в Luxury Nails - место, где создаются настоящие произведения искусства для ваших ногтей. Наши мастера превратят ваши руки в предмет восхищения!</p>
+            <button class="btn btn-hero" id="hero-btn">Записаться онлайн</button>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="services" id="services">
+        <h2 class="section-title">Наши услуги</h2>
+        <div class="services-grid">
+            <div class="service-card animate-on-scroll">
+                <div class="service-img">
+                    <i class="fas fa-hand-sparkles"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Классический маникюр</h3>
+                    <p>Традиционный обрезной маникюр с питательным кремом и маслом для кутикулы.</p>
+                    <div class="price">от 1 200 руб.</div>
+                    <button class="btn btn-outline">Записаться</button>
+                </div>
+            </div>
+            
+            <div class="service-card animate-on-scroll">
+                <div class="service-img">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Гель-лак</h3>
+                    <p>Стойкое покрытие, которое сохраняет безупречный вид до 3 недель.</p>
+                    <div class="price">от 2 000 руб.</div>
+                    <button class="btn btn-outline">Записаться</button>
+                </div>
+            </div>
+            
+            <div class="service-card animate-on-scroll">
+                <div class="service-img">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Наращивание ногтей</h3>
+                    <p>Создание идеальной длины и формы с помощью геля или акрила.</p>
+                    <div class="price">от 3 500 руб.</div>
+                    <button class="btn btn-outline">Записаться</button>
+                </div>
+            </div>
+            
+            <div class="service-card animate-on-scroll">
+                <div class="service-img">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <div class="service-content">
+                    <h3>SPA для рук</h3>
+                    <p>Расслабляющая процедура с пилингом, маской и массажем.</p>
+                    <div class="price">от 1 800 руб.</div>
+                    <button class="btn btn-outline">Записаться</button>
+                </div>
+            </div>
+            
+            <div class="service-card animate-on-scroll">
+                <div class="service-img">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Дизайн ногтей</h3>
+                    <p>Эксклюзивный дизайн: френч, стемпинг, роспись, инкрустация.</p>
+                    <div class="price">от 500 руб.</div>
+                    <button class="btn btn-outline">Записаться</button>
+                </div>
+            </div>
+            
+            <div class="service-card animate-on-scroll">
+                <div class="service-img">
+                    <i class="fas fa-paw"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Педикюр</h3>
+                    <p>Комплексный уход за ногами: обработка стоп, удаление мозолей, покрытие.</p>
+                    <div class="price">от 2 500 руб.</div>
+                    <button class="btn btn-outline">Записаться</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section class="about" id="about">
+        <div class="about-img animate-on-scroll">
+            <div><i class="fas fa-heart"></i></div>
+        </div>
+        <div class="about-content animate-on-scroll">
+            <h2>Почему выбирают нас?</h2>
+            <p>Luxury Nails - это премиальный салон ногтевого сервиса, где каждая деталь создана для вашего комфорта и удовольствия.</p>
+            <p>Наши преимущества:</p>
+            <ul>
+                <li>Профессиональные мастера с международной сертификацией</li>
+                <li>Использование только премиальных материалов и инструментов</li>
+                <li>Индивидуальный подход к каждому клиенту</li>
+                <li>Стерильные условия и одноразовые инструменты</li>
+                <li>Уютная атмосфера и приятная музыка</li>
+                <li>Бесплатные напитки и Wi-Fi</li>
+            </ul>
+            <p>Мы постоянно совершенствуемся и следим за последними трендами в индустрии красоты, чтобы предложить вам самое лучшее!</p>
+        </div>
+    </section>
+
+    <!-- Мастера -->
+    <section class="team" id="team">
+        <h2 class="section-title">Наши мастера</h2>
+        <div class="team-grid">
+            <div class="team-member animate-on-scroll">
+                <div class="member-img">
+                    <i class="fas fa-user-alt"></i>
+                </div>
+                <div class="member-info">
+                    <h3>Анна Иванова</h3>
+                    <p>Топ-мастер, специалист по дизайну</p>
+                    <p>Стаж: 8 лет</p>
+                </div>
+            </div>
+            
+            <div class="team-member animate-on-scroll">
+                <div class="member-img">
+                    <i class="fas fa-user-alt"></i>
+                </div>
+                <div class="member-info">
+                    <h3>Екатерина Смирнова</h3>
+                    <p>Эксперт по наращиванию ногтей</p>
+                    <p>Стаж: 6 лет</p>
+                </div>
+            </div>
+            
+            <div class="team-member animate-on-scroll">
+                <div class="member-img">
+                    <i class="fas fa-user-alt"></i>
+                </div>
+                <div class="member-info">
+                    <h3>Ольга Петрова</h3>
+                    <p>Специалист по SPA-уходу</p>
+                    <p>Стаж: 5 лет</p>
+                </div>
+            </div>
+            
+            <div class="team-member animate-on-scroll">
+                <div class="member-img">
+                    <i class="fas fa-user-alt"></i>
+                </div>
+                <div class="member-info">
+                    <h3>Мария Кузнецова</h3>
+                    <p>Мастер педикюра</p>
+                    <p>Стаж: 7 лет</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Запись -->
+    <section class="booking" id="booking">
+        <h2 class="section-title">Запись онлайн</h2>
+        <div class="booking-form animate-on-scroll">
+            <div class="form-group">
+                <label for="name">Ваше имя</label>
+                <input type="text" id="name" placeholder="Введите ваше имя">
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Телефон</label>
+                <input type="tel" id="phone" placeholder="Введите ваш телефон">
+            </div>
+            
+            <div class="form-group">
+                <label for="service">Услуга</label>
+                <select id="service">
+                    <option value="">Выберите услугу</option>
+                    <option value="manicure">Классический маникюр</option>
+                    <option value="gel">Гель-лак</option>
+                    <option value="extensions">Наращивание ногтей</option>
+                    <option value="spa">SPA для рук</option>
+                    <option value="design">Дизайн ногтей</option>
+                    <option value="pedicure">Педикюр</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="master">Мастер</label>
+                <select id="master">
+                    <option value="">Любой мастер</option>
+                    <option value="anna">Анна Иванова</option>
+                    <option value="ekaterina">Екатерина Смирнова</option>
+                    <option value="olga">Ольга Петрова</option>
+                    <option value="maria">Мария Кузнецова</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="date">Дата и время</label>
+                <input type="datetime-local" id="date">
+            </div>
+            
+            <div class="form-group">
+                <label for="comments">Комментарии</label>
+                <textarea id="comments" rows="4" placeholder="Ваши пожелания..."></textarea>
+            </div>
+            
+            <button class="btn btn-primary" style="width: 100%;">Подтвердить запись</button>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Luxury Nails</h3>
+                <p>Премиальный салон ногтевого сервиса, где каждый клиент становится частью нашей семьи красоты и стиля.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Часы работы</h3>
+                <ul>
+                    <li>Понедельник - Пятница: 9:00 - 21:00</li>
+                    <li>Суббота: 10:00 - 20:00</li>
+                    <li>Воскресенье: 11:00 - 18:00</li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Контакты</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Тверская, д. 18</li>
+                    <li><i class="fas fa-phone"></i> +7 (495) 123-45-67</li>
+                    <li><i class="fas fa-envelope"></i> info@luxurynails.ru</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Luxury Nails. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно авторизации -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Вход в систему</h2>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="login">Вход</div>
+                <div class="tab" data-tab="register">Регистрация</div>
+            </div>
+            
+            <div class="tab-content active" id="login-tab">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="Ваш email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password">Пароль</label>
+                    <input type="password" id="login-password" placeholder="Ваш пароль">
+                </div>
+                
+                <button class="btn btn-primary" id="login-submit">Войти</button>
+            </div>
+            
+            <div class="tab-content" id="register-tab">
+                <div class="form-group">
+                    <label for="register-name">Имя</label>
+                    <input type="text" id="register-name" placeholder="Ваше имя">
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" placeholder="Ваш email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-phone">Телефон</label>
+                    <input type="tel" id="register-phone" placeholder="Ваш телефон">
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-password">Пароль</label>
+                    <input type="password" id="register-password" placeholder="Придумайте пароль">
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-confirm">Подтвердите пароль</label>
+                    <input type="password" id="register-confirm" placeholder="Повторите пароль">
+                </div>
+                
+                <button class="btn btn-primary" id="register-submit">Зарегистрироваться</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Анимации при прокрутке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Анимации при прокрутке
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 50) {
+                        element.classList.add('animated');
+                    }
+                });
+            };
+            
+            // Инициализация при загрузке
+            animateOnScroll();
+            
+            // Обработка скролла
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Прокрутка к секциям
+            document.querySelectorAll('nav a, .btn-hero').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Закрываем мобильное меню
+                        document.getElementById('nav-menu').classList.remove('active');
+                    }
+                });
+            });
+            
+            // Мобильное меню
+            document.getElementById('menu-toggle').addEventListener('click', function() {
+                document.getElementById('nav-menu').classList.toggle('active');
+            });
+            
+            // Изменение шапки при прокрутке
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Модальное окно авторизации
+            const authModal = document.getElementById('auth-modal');
+            const loginBtn = document.getElementById('login-btn');
+            const registerBtn = document.getElementById('register-btn');
+            const closeModal = document.querySelector('.close-modal');
+            const tabs = document.querySelectorAll('.tab');
+            const heroBtn = document.getElementById('hero-btn');
+            
+            // Открытие модалки
+            loginBtn.addEventListener('click', () => {
+                authModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            registerBtn.addEventListener('click', () => {
+                authModal.classList.add('active');
+                switchTab('register');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            heroBtn.addEventListener('click', () => {
+                document.querySelector('#booking').scrollIntoView({behavior: 'smooth'});
+            });
+            
+            // Закрытие модалки
+            closeModal.addEventListener('click', () => {
+                authModal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            // Клик вне модалки
+            window.addEventListener('click', (e) => {
+                if (e.target === authModal) {
+                    authModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Переключение табов
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+            
+            function switchTab(tabId) {
+                // Убираем активные классы
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Добавляем активные классы
+                document.querySelector(`.tab[data-tab="${tabId}"]`).classList.add('active');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+                document.getElementById('modal-title').textContent = tabId === 'login' ? 'Вход в систему' : 'Регистрация';
+            }
+            
+            // Отправка форм
+            document.getElementById('login-submit').addEventListener('click', function() {
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                
+                if (email && password) {
+                    alert('Вход выполнен успешно!');
+                    authModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                    
+                    // Меняем кнопки в шапке
+                    document.querySelector('.auth-buttons').innerHTML = `
+                        <button class="btn btn-outline" id="profile-btn">
+                            <i class="fas fa-user"></i> Профиль
+                        </button>
+                        <button class="btn btn-primary" id="logout-btn">Выйти</button>
+                    `;
+                    
+                    // Добавляем обработчики для новых кнопок
+                    document.getElementById('logout-btn').addEventListener('click', function() {
+                        document.querySelector('.auth-buttons').innerHTML = `
+                            <button class="btn btn-outline" id="login-btn">Войти</button>
+                            <button class="btn btn-primary" id="register-btn">Регистрация</button>
+                        `;
+                        
+                        // Перепривязываем обработчики
+                        document.getElementById('login-btn').addEventListener('click', () => {
+                            authModal.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                        });
+                        
+                        document.getElementById('register-btn').addEventListener('click', () => {
+                            authModal.classList.add('active');
+                            switchTab('register');
+                            document.body.style.overflow = 'hidden';
+                        });
+                    });
+                } else {
+                    alert('Пожалуйста, заполните все поля');
+                }
+            });
+            
+            document.getElementById('register-submit').addEventListener('click', function() {
+                const name = document.getElementById('register-name').value;
+                const email = document.getElementById('register-email').value;
+                const phone = document.getElementById('register-phone').value;
+                const password = document.getElementById('register-password').value;
+                const confirm = document.getElementById('register-confirm').value;
+                
+                if (name && email && phone && password && confirm) {
+                    if (password === confirm) {
+                        alert('Регистрация прошла успешно!');
+                        switchTab('login');
+                    } else {
+                        alert('Пароли не совпадают');
+                    }
+                } else {
+                    alert('Пожалуйста, заполните все поля');
+                }
+            });
+            
+            // Анимация кнопок при наведении
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
